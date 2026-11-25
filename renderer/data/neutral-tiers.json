@@ -1,0 +1,308 @@
+{
+ "tiers": [
+  {
+   "tier": 1,
+   "start": "0:00",
+   "artifacts": [
+    "chipped_vest",
+    "ash_legion_shield",
+    "possessed_mask",
+    "dormant_curio",
+    "red_ledger",
+    "weighted_dice",
+    "polliwog_charm",
+    "seeds_of_serenity",
+    "foragers_kit",
+    "kobold_cup",
+    "stonefeather_satchel",
+    "pogo_stick"
+   ],
+   "enhancements": {
+    "global": [
+     {
+      "key": "enhancement_quickened",
+      "level": 1
+     },
+     {
+      "key": "enhancement_vital",
+      "level": 1
+     }
+    ],
+    "strength": [
+     {
+      "key": "enhancement_brawny",
+      "level": 1
+     },
+     {
+      "key": "enhancement_tough",
+      "level": 1
+     }
+    ],
+    "agility": [
+     {
+      "key": "enhancement_alert",
+      "level": 1
+     },
+     {
+      "key": "enhancement_brawny",
+      "level": 1
+     }
+    ],
+    "intelligence": [
+     {
+      "key": "enhancement_mystical",
+      "level": 1
+     },
+     {
+      "key": "enhancement_tough",
+      "level": 1
+     }
+    ],
+    "universal": [
+     {
+      "key": "enhancement_alert",
+      "level": 1
+     },
+     {
+      "key": "enhancement_mystical",
+      "level": 1
+     }
+    ]
+   }
+  },
+  {
+   "tier": 2,
+   "start": "15:00",
+   "artifacts": [
+    "psychic_headband",
+    "safety_bubble",
+    "metamorphic_mandible",
+    "jidi_pollen_bag",
+    "brick",
+    "crippling_crossbow",
+    "imp_claw",
+    "gunpowder_gauntlets",
+    "defiant_shell",
+    "partisans_brand",
+    "spellslinger",
+    "mana_draught"
+   ],
+   "enhancements": {
+    "global": [
+     {
+      "key": "enhancement_quickened",
+      "level": 2
+     },
+     {
+      "key": "enhancement_vital",
+      "level": 2
+     }
+    ],
+    "strength": [
+     {
+      "key": "enhancement_brawny",
+      "level": 2
+     },
+     {
+      "key": "enhancement_tough",
+      "level": 2
+     },
+     {
+      "key": "enhancement_crude",
+      "level": 1
+     }
+    ],
+    "agility": [
+     {
+      "key": "enhancement_alert",
+      "level": 2
+     },
+     {
+      "key": "enhancement_brawny",
+      "level": 2
+     },
+     {
+      "key": "enhancement_nimble",
+      "level": 1
+     }
+    ],
+    "intelligence": [
+     {
+      "key": "enhancement_mystical",
+      "level": 2
+     },
+     {
+      "key": "enhancement_tough",
+      "level": 2
+     },
+     {
+      "key": "enhancement_keen_eyed",
+      "level": 1
+     }
+    ],
+    "universal": [
+     {
+      "key": "enhancement_alert",
+      "level": 2
+     },
+     {
+      "key": "enhancement_mystical",
+      "level": 2
+     },
+     {
+      "key": "enhancement_titanic",
+      "level": 1
+     }
+    ]
+   }
+  },
+  {
+   "tier": 3,
+   "start": "30:00",
+   "artifacts": [
+    "prophets_pendulum",
+    "dandelion_amulet",
+    "idol_of_screeauk",
+    "balmhook",
+    "rattlecage",
+    "stormcrafter",
+    "enchanters_bauble",
+    "ceremonial_robe",
+    "harmonizer",
+    "vile_phial",
+    "serrated_shiv",
+    "revenants_brooch"
+   ],
+   "enhancements": {
+    "global": [
+     {
+      "key": "enhancement_quickened",
+      "level": 3
+     },
+     {
+      "key": "enhancement_greedy",
+      "level": 1
+     }
+    ],
+    "strength": [
+     {
+      "key": "enhancement_brawny",
+      "level": 3
+     },
+     {
+      "key": "enhancement_tough",
+      "level": 3
+     },
+     {
+      "key": "enhancement_crude",
+      "level": 2
+     }
+    ],
+    "agility": [
+     {
+      "key": "enhancement_alert",
+      "level": 3
+     },
+     {
+      "key": "enhancement_brawny",
+      "level": 3
+     },
+     {
+      "key": "enhancement_nimble",
+      "level": 2
+     }
+    ],
+    "intelligence": [
+     {
+      "key": "enhancement_mystical",
+      "level": 3
+     },
+     {
+      "key": "enhancement_tough",
+      "level": 3
+     },
+     {
+      "key": "enhancement_keen_eyed",
+      "level": 2
+     }
+    ],
+    "universal": [
+     {
+      "key": "enhancement_alert",
+      "level": 3
+     },
+     {
+      "key": "enhancement_mystical",
+      "level": 3
+     },
+     {
+      "key": "enhancement_titanic",
+      "level": 2
+     }
+    ]
+   }
+  },
+  {
+   "tier": 4,
+   "start": "50:00",
+   "artifacts": [
+    "fallen_sky",
+    "flicker",
+    "minotaur_horn",
+    "mind_breaker",
+    "divine_regalia",
+    "heavy_blade",
+    "helm_of_the_hivemind",
+    "dezun_bloodrite",
+    "conjurers_catalyst",
+    "giants_ring",
+    "demonicon",
+    "riftshadow_prism"
+   ],
+   "enhancements": {
+    "global": [
+     {
+      "key": "enhancement_timeless",
+      "level": 1
+     },
+     {
+      "key": "enhancement_evolved",
+      "level": 1
+     },
+     {
+      "key": "enhancement_fleetfooted",
+      "level": 1
+     },
+     {
+      "key": "enhancement_vampiric",
+      "level": 1
+     }
+    ],
+    "strength": [
+     {
+      "key": "enhancement_hulking",
+      "level": 1
+     }
+    ],
+    "agility": [
+     {
+      "key": "enhancement_audacious",
+      "level": 1
+     }
+    ],
+    "intelligence": [
+     {
+      "key": "enhancement_feverish",
+      "level": 1
+     }
+    ],
+    "universal": [
+     {
+      "key": "enhancement_manic",
+      "level": 1
+     }
+    ]
+   }
+  }
+ ]
+}

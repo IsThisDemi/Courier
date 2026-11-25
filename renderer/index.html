@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Courier</title>
+<link rel="icon" href="data:," />
+<link rel="stylesheet" href="fonts/fonts.css" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="bar">
+  <div class="status" id="status" data-kind="waiting">
+    <span class="status-dot" aria-hidden="true"></span>
+    <span id="status-text">In attesa di Dota</span>
+  </div>
+  <div class="bar-clock" id="bar-clock" hidden></div>
+  <button class="icon-btn help-btn" id="open-help" aria-label="Scorciatoie e legenda" title="Scorciatoie e legenda">?</button>
+  <button class="icon-btn" id="open-settings" aria-label="Impostazioni" title="Impostazioni">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 8.6a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8zm8.2 4.6.1-1.2-.1-1.2 2-1.6-2-3.4-2.4.9a8 8 0 0 0-2-1.2L15.4 3h-3.8l-.4 2.5a8 8 0 0 0-2 1.2L6.8 5.8l-2 3.4 2 1.6-.1 1.2.1 1.2-2 1.6 2 3.4 2.4-.9a8 8 0 0 0 2 1.2l.4 2.5h3.8l.4-2.5a8 8 0 0 0 2-1.2l2.4.9 2-3.4z"/></svg>
+  </button>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button role="tab" data-tab="draft" aria-selected="true">Draft</button>
+  <button role="tab" data-tab="live" aria-selected="false">Partita</button>
+  <button role="tab" data-tab="items" aria-selected="false">Oggetti</button>
+</nav>
+
+<main>
+  <section class="view" id="view-draft" data-active>
+    <div class="lineup" id="lineup"></div>
+    <div class="position" id="position-draft"></div>
+    <div class="section" id="bans-section" hidden>
+      <div class="section-head"><h2>Da bannare</h2></div>
+      <div id="bans"></div>
+    </div>
+    <div class="section">
+      <div class="section-head">
+        <h2>Pick consigliati</h2>
+        <div class="chips" id="role-filter" role="radiogroup" aria-label="Filtra per ruolo"></div>
+      </div>
+      <div id="picks"></div>
+    </div>
+    <div class="section" id="players-section" hidden>
+      <div class="section-head"><h2>Avversari abituali</h2></div>
+      <div id="players"></div>
+    </div>
+    <details class="section fold" id="screen-section">
+      <summary><h2>Lettura dallo schermo</h2><span class="fold-note" id="screen-note"></span></summary>
+      <div id="screen"></div>
+    </details>
+  </section>
+
+  <section class="view" id="view-live">
+    <div class="clockface" id="clockface"></div>
+    <div class="next-up" id="next-up" hidden></div>
+    <ol class="timeline-v" id="timeline"></ol>
+    <div class="section" id="postgame-section" hidden><div id="postgame"></div></div>
+    <div class="rosh" id="rosh"></div>
+    <div class="section" id="hero-panel"></div>
+  </section>
+
+  <section class="view" id="view-items">
+    <div class="position" id="position-items"></div>
+    <div id="build"></div>
+    <div class="section" id="skills-section" hidden>
+      <div class="section-head"><h2>Ordine delle abilità</h2></div>
+      <div id="skills"></div>
+    </div>
+    <div class="section" id="neutrals-section" hidden>
+      <div class="section-head"><h2>Neutrali da scegliere</h2></div>
+      <div id="neutrals"></div>
+    </div>
+    <div class="section">
+      <div class="section-head"><h2>Contro questi nemici</h2></div>
+      <div id="counter-items"></div>
+    </div>
+    <div class="section" id="predictions-section" hidden>
+      <div class="section-head"><h2>Cosa compreranno i nemici</h2></div>
+      <div id="predictions"></div>
+    </div>
+  </section>
+</main>
+
+<div class="sheet" id="picker" hidden>
+  <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="picker-title">
+    <div class="sheet-head">
+      <h2 id="picker-title">Scegli un eroe</h2>
+      <button class="text-btn" id="picker-remove" hidden>Togli</button>
+      <button class="icon-btn" id="picker-close" aria-label="Chiudi">✕</button>
+    </div>
+    <div class="picker-tools">
+      <input id="picker-search" type="search" placeholder="Cerca per nome" autocomplete="off" spellcheck="false" />
+      <div class="chips" id="picker-attr" role="radiogroup" aria-label="Attributo"></div>
+    </div>
+    <div class="picker-grid" id="picker-grid"></div>
+  </div>
+</div>
+
+<div class="sheet" id="settings" hidden>
+  <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+    <div class="sheet-head">
+      <h2 id="settings-title">Impostazioni</h2>
+      <button class="icon-btn" id="settings-close" aria-label="Chiudi">✕</button>
+    </div>
+    <div class="form">
+      <label>Chiave API OpenDota
+        <input id="set-key" type="text" autocomplete="off" spellcheck="false" placeholder="Facoltativa, alza il limite di richieste" />
+      </label>
+      <label>Il tuo Account ID
+        <input id="set-me" type="text" inputmode="numeric" autocomplete="off" placeholder="Account ID o Steam ID, es. 123456789" />
+      </label>
+      <label>Account ID degli avversari abituali
+        <input id="set-enemies" type="text" autocomplete="off" placeholder="Separati da virgola" />
+        <small>È il numero alla fine dell'indirizzo del profilo su OpenDota o Dotabuff.</small>
+      </label>
+      <div class="form-actions">
+        <button class="btn primary" id="settings-save">Salva</button>
+        <button class="btn" id="lineup-reset">Svuota la partita</button>
+        <a class="btn" href="/logs?lines=300" target="_blank" rel="noopener">Apri il log</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sheet" id="help" hidden>
+  <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="help-title">
+    <div class="sheet-head">
+      <h2 id="help-title">Scorciatoie</h2>
+      <button class="icon-btn" id="help-close" aria-label="Chiudi">✕</button>
+    </div>
+    <div class="help-body">
+      <p class="group-title">Da tastiera, anche mentre giochi</p>
+      <div class="group">
+        <div class="row"><span class="keys"><kbd>Alt</kbd><kbd>D</kbd></span><span>Mostra o nasconde la finestra</span></div>
+        <div class="row"><span class="keys"><kbd>Alt</kbd><kbd>T</kbd></span><span>Clic passanti: i clic arrivano al gioco attraverso la finestra</span></div>
+        <div class="row"><span class="keys"><kbd>Alt</kbd><kbd>C</kbd></span><span>Modalità compatta: orologio, prossimi eventi, prossimo oggetto e abilità</span></div>
+        <div class="row"><span class="keys"><kbd>Alt</kbd><kbd>R</kbd></span><span>Segna Roshan ucciso adesso</span></div>
+        <div class="row"><span class="keys"><kbd>Alt</kbd><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd></span><span>Draft, Partita, Oggetti</span></div>
+      </div>
+      <p class="group-foot" id="help-desktop-note">Le scorciatoie funzionano nell'app desktop, con Dota in modalità finestra senza bordi.</p>
+      <p class="group-title">Cosa vogliono dire i colori</p>
+      <div class="group">
+        <div class="row"><span class="swatch" style="background:var(--radiant)"></span><span>Alleati, Radiant, vantaggio</span></div>
+        <div class="row"><span class="swatch" style="background:var(--dire)"></span><span>Nemici, Dire, svantaggio, oggetti stimati dei nemici</span></div>
+        <div class="row"><span class="swatch" style="background:var(--accent)"></span><span>Tu e la prossima cosa da fare: oggetto, punto abilità, neutrale</span></div>
+        <div class="row"><span class="swatch" style="background:var(--amber)"></span><span>Orari; la riga piena in ambra è l'evento tra pochi secondi</span></div>
+        <div class="row"><span class="swatch dot"></span><span>Eroe aggiunto da te o letto dallo schermo</span></div>
+        <div class="row"><span class="tilde">~</span><span>Stima dalle build dei pro, non un dato del gioco</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="counter-items.js"></script>
+<script src="detect.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
